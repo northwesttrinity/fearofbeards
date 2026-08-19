@@ -1,0 +1,14 @@
+name = "fearofbeards"
+compatibility_date = "2026-08-15"
+main = "src/index.js"
+
+[assets]
+directory = "."
+
+[[kv_namespaces]]
+binding = "VISITOR_COUNT"
+id = "7f72d5610e2f4b00ab29e16bebca1906"
+
+[[kv_namespaces]]
+binding = "TRACK_PLAYS"
+id = "f7b73342b656438da0c6f4cd3996c1ec"
