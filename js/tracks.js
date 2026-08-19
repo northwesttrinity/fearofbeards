@@ -25,10 +25,10 @@ const ALBUMS = {
 
 const TRACKS = [
   // ---- Seventeen Minute Hole, 2005 ----
+  { title: "Breaking Out", album: "Seventeen Minute Hole", src: "audio/track-16-breaking-out.mp3" },
   { title: "First Day", album: "Seventeen Minute Hole", src: "audio/track-05-first-day.mp3" },
   { title: "Spin", album: "Seventeen Minute Hole", src: "audio/track-15-spin.mp3" },
   { title: "Human Being", album: "Seventeen Minute Hole", src: "audio/track-14-human-being.mp3" },
-  { title: "Breaking Out", album: "Seventeen Minute Hole", src: "audio/track-16-breaking-out.mp3" },
   { title: "Round & Round", album: "Seventeen Minute Hole", src: "audio/track-13-round-and-round.mp3" },
   { title: "Under One Sun", album: "Seventeen Minute Hole", src: "audio/track-09-under-one-sun.mp3" },
   { title: "Giants & Gnomes", album: "Seventeen Minute Hole", src: "audio/track-12-giants-and-gnomes.mp3" },
