@@ -138,8 +138,8 @@
           <figcaption>Rehearsal, indoors, inexplicably dressed for a blizzard.</figcaption>
         </figure>
         <figure class="about-photo">
-          <img src="images/photo-stool-dylan.jpg" alt="Band member playing guitar with eyes closed, mid-note, in a recording studio" loading="lazy">
-          <figcaption>Eyes closed, mid-note, otherwise unaccounted for.</figcaption>
+          <img src="images/photo-stool-dylan.jpg" alt="Band member playing guitar eyes closed, a Bob Dylan photo on the wall behind him" loading="lazy">
+          <figcaption>Eyes closed, mid-note, Dylan watching from the wall.</figcaption>
         </figure>
         <figure class="about-photo">
           <img src="images/photo-window-tune.jpg" alt="Band member tuning a guitar by a window at dusk" loading="lazy">
@@ -258,7 +258,11 @@
   </div>
   <div class="footer-bottom">
     <span>Rehosted with love, <span class="js-year">{{YEAR}}</span>.</span>
-    <span>Site built for streaming &amp; free download. No tracking, no accounts.</span>
+    <div class="visitor-counter" id="visitorCounter" hidden aria-live="polite">
+      <span class="vc-label">visitor no.</span>
+      <span class="vc-digits" id="vcDigits"></span>
+    </div>
+    <span>Free download, no accounts. (One cookie, just to count visitors and track plays.)</span>
   </div>
 </footer>
 

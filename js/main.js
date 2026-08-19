@@ -4,9 +4,9 @@
     el.textContent = el.textContent.replace("{{YEAR}}", new Date().getFullYear());
   });
 
-  // unique visitor counter — reads/increments via /api/hit, backed by KV.
-  // Stays hidden if the endpoint isn't configured, so the footer looks
-  // intentional either way. See src/index.js.
+  // unique visitor counter — reads/increments via /api/hit (Cloudflare Pages
+  // Function + KV). Stays hidden if the endpoint isn't configured, so the
+  // footer looks intentional either way. See functions/api/hit.js.
   (function loadVisitorCounter() {
     const wrap = document.getElementById("visitorCounter");
     const digitsEl = document.getElementById("vcDigits");

@@ -117,6 +117,45 @@
     return `${m}:${s}`;
   }
 
+  // ---------- Track play counts ----------
+  function trackId(track) {
+    return track.src.split("/").pop();
+  }
+
+  function renderPlayCounts(counts) {
+    if (!counts) return;
+    document.querySelectorAll("[data-plays-for]").forEach((el) => {
+      const id = el.dataset.playsFor;
+      const n = counts[id];
+      if (typeof n === "number") {
+        el.textContent = `${n} ${n === 1 ? "play" : "plays"}`;
+        el.hidden = false;
+      }
+    });
+  }
+
+  function loadPlayCounts() {
+    fetch("/api/plays", { headers: { Accept: "application/json" } })
+      .then((res) => (res.ok ? res.json() : Promise.reject()))
+      .then((data) => renderPlayCounts(data && data.counts))
+      .catch(() => {
+        // endpoint missing / KV not bound — leave the placeholders hidden
+      });
+  }
+
+  function registerPlay(track) {
+    fetch("/api/plays", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ track: trackId(track) }),
+    })
+      .then((res) => (res.ok ? res.json() : Promise.reject()))
+      .then((data) => renderPlayCounts(data && data.counts))
+      .catch(() => {
+        // silently ignore — a missed play count isn't worth surfacing an error
+      });
+  }
+
   function renderTracklist() {
     tracklistEl.innerHTML = "";
     let lastAlbum = null;
@@ -145,6 +184,7 @@
         <span class="track-index">${String(albumPosition).padStart(2, "0")}</span>
         <span class="track-main">
           <span class="track-title">${track.title}</span>${track.note ? `<br><span class="track-note">${track.note}</span>` : ""}
+          <span class="track-plays" data-plays-for="${trackId(track)}" hidden>— plays</span>
         </span>
         <span class="track-dur" data-dur="${i}">--:--</span>
         <a class="track-dl" href="${track.src}" download title="Download ${track.title}">Download</a>
@@ -156,6 +196,7 @@
       tracklistEl.appendChild(li);
     });
     preloadDurations();
+    loadPlayCounts();
   }
 
   function preloadDurations() {
@@ -188,6 +229,7 @@
     npTitle.textContent = track.title;
     npMeta.textContent = meta.year ? `${track.album} · ${meta.year}` : track.album || "";
     setActiveRow(index);
+    if (autoplay) registerPlay(track);
     scrub.value = 0;
     curTimeEl.textContent = "0:00";
     durTimeEl.textContent = "0:00";

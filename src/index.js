@@ -6,6 +6,11 @@
 //      automatically — no extra config needed beyond [assets] in wrangler.toml.
 //   2. Handles two small API routes for the visitor counter and per-track
 //      play counts, backed by two KV namespaces (VISITOR_COUNT, TRACK_PLAYS).
+//
+// This replaces the old functions/api/*.js files, which used the Cloudflare
+// Pages Functions convention (auto-routed by file path). Plain "Workers with
+// static assets" doesn't use that convention — a single fetch handler with
+// manual routing, like this one, is the current standard approach instead.
 
 const TRACK_ID_RE = /^[a-z0-9-]+\.mp3$/;
 
@@ -93,6 +98,8 @@ export default {
       return handlePlaysPost(request, env);
     }
 
+    // Everything else — index.html, css/js, images, audio — falls through
+    // to the static assets Cloudflare serves automatically.
     return env.ASSETS.fetch(request);
   },
 };
