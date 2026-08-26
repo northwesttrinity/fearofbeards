@@ -95,7 +95,7 @@
     );
     remotePlayerController.addEventListener(
       cast.framework.RemotePlayerEventType.PLAYER_STATE_CHANGED,
-      updatePlayUI
+      onCastPlayerStateChanged
     );
     remotePlayerController.addEventListener(
       cast.framework.RemotePlayerEventType.CURRENT_TIME_CHANGED,
@@ -107,6 +107,33 @@
     );
 
     if (castWrap) castWrap.hidden = false;
+  }
+
+  // When casting, the local <audio> "ended" event never fires (nothing is
+  // playing locally), so auto-advance has to be driven by the remote
+  // player's own state instead. A track finishing shows up as the remote
+  // player going IDLE with idleReason FINISHED.
+  let castAdvancing = false;
+
+  function onCastPlayerStateChanged() {
+    updatePlayUI();
+    if (!isCasting || currentIndex === -1 || !remotePlayer) return;
+
+    if (remotePlayer.playerState === chrome.cast.media.PlayerState.PLAYING) {
+      castAdvancing = false;
+      return;
+    }
+
+    if (remotePlayer.playerState === chrome.cast.media.PlayerState.IDLE && !castAdvancing) {
+      const session = cast.framework.CastContext.getInstance().getCurrentSession();
+      const media = session && session.getMediaSession();
+      if (media && media.idleReason === chrome.cast.media.IdleReason.FINISHED) {
+        castAdvancing = true;
+        if (currentIndex < TRACKS.length - 1) {
+          loadTrack(currentIndex + 1, true);
+        }
+      }
+    }
   }
 
   // ---------- Local player ----------
@@ -224,6 +251,7 @@
   function loadTrack(index, autoplay) {
     if (index < 0 || index >= TRACKS.length) return;
     currentIndex = index;
+    castAdvancing = false;
     const track = TRACKS[index];
     const meta = (typeof ALBUMS !== "undefined" && ALBUMS[track.album]) || {};
     npTitle.textContent = track.title;
