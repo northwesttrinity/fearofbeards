@@ -29,12 +29,12 @@ const ALBUMS = {
 
 const TRACKS = [
   // ---- Just Visiting, 2006 ----
-  { title: "Black Hole", album: "Just Visiting", src: "audio/track-08-black-hole.mp3" },
   { title: "First Day", album: "Just Visiting", src: "audio/track-05-first-day.mp3" },
   { title: "Test Run", album: "Just Visiting", src: "audio/track-20-test-run.mp3" },
+  { title: "Black Hole", album: "Just Visiting", src: "audio/track-08-black-hole.mp3" },
   { title: "Sink or Swim", album: "Just Visiting", src: "audio/track-19-sink-or-swim.mp3" },
-  { title: "Weary Wanderers", album: "Just Visiting", src: "audio/track-18-weary-wanderers.mp3" },
   { title: "Human Being", album: "Just Visiting", src: "audio/track-14-human-being.mp3" },
+  { title: "Weary Wanderers", album: "Just Visiting", src: "audio/track-18-weary-wanderers.mp3" },
   { title: "Here I am Home", album: "Just Visiting", src: "audio/track-21-here-i-am-home.mp3" },
 
   // ---- Seventeen Minute Hole, 2004 ----
