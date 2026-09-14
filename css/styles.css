@@ -184,15 +184,16 @@ section { padding: 100px var(--edge); max-width: var(--max); margin: 0 auto; }
   margin-bottom: 48px;
 }
 .listen-art { display: flex; justify-content: center; }
-.listen-art-pair {
-  gap: 8px;
+.listen-art-trio {
+  gap: 6px;
   align-items: center;
 }
-.listen-art-pair .album-cover-img {
-  width: min(46%, 190px);
+.listen-art-trio .album-cover-img {
+  width: min(32%, 145px);
 }
-.album-cover-img.cover-a { transform: rotate(-4deg); }
-.album-cover-img.cover-b { transform: rotate(3deg); }
+.album-cover-img.cover-a { transform: rotate(-5deg); }
+.album-cover-img.cover-b { transform: rotate(2deg); z-index: 1; }
+.album-cover-img.cover-c { transform: rotate(-2deg); }
 
 .player {
   position: fixed;
