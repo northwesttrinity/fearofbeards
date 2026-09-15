@@ -30,9 +30,10 @@ const ALBUMS = {
 const TRACKS = [
   // ---- Seventeen Minute Hole, 2006 ----
   { title: "Sink or Swim", album: "Seventeen Minute Hole", src: "audio/track-19-sink-or-swim.mp3" },
-  { title: "Test Run", album: "Seventeen Minute Hole", src: "audio/track-20-test-run.mp3" },
-  { title: "Any Time You Like", album: "Seventeen Minute Hole", src: "audio/track-01-any-time-you-like.mp3" },
   { title: "First Day", album: "Seventeen Minute Hole", src: "audio/track-05-first-day.mp3" },
+  { title: "Test Run", album: "Seventeen Minute Hole", src: "audio/track-20-test-run.mp3" },
+  { title: "Parting Breath", album: "Seventeen Minute Hole", src: "audio/track-17-parting-breath.mp3" },
+  { title: "Any Time You Like", album: "Seventeen Minute Hole", src: "audio/track-01-any-time-you-like.mp3" },
   { title: "Human Being", album: "Seventeen Minute Hole", src: "audio/track-14-human-being.mp3" },
   { title: "Weary Wanderers", album: "Seventeen Minute Hole", src: "audio/track-18-weary-wanderers.mp3" },
   { title: "Here I am Home", album: "Seventeen Minute Hole", src: "audio/track-21-here-i-am-home.mp3" },
@@ -47,7 +48,7 @@ const TRACKS = [
   { title: "The Trees Believe", album: "Enter the Daydream", src: "audio/track-10-the-trees-believe.mp3" },
 
   // ---- Discounted Lucky Stars, 2002 ----
-  { title: "Parting Breath", album: "Discounted Lucky Stars", src: "audio/track-17-parting-breath.mp3" },
+  { title: "Rise Again", album: "Discounted Lucky Stars", src: "audio/track-22-rise-again.mp3" },
   { title: "We Can Be Free", album: "Discounted Lucky Stars", src: "audio/track-02-we-can-be-free.mp3" },
   { title: "The Evening", album: "Discounted Lucky Stars", src: "audio/track-06-the-evening.mp3" },
   { title: "Black Hole", album: "Discounted Lucky Stars", src: "audio/track-08-black-hole.mp3" },
