@@ -35,8 +35,8 @@ const TRACKS = [
   { title: "Any Time You Like", album: "Seventeen Minute Hole", src: "audio/track-01-any-time-you-like.mp3" },
   { title: "First Day", album: "Seventeen Minute Hole", src: "audio/track-05-first-day.mp3" },
   { title: "Human Being", album: "Seventeen Minute Hole", src: "audio/track-14-human-being.mp3" },
-  { title: "Weary Wanderers", album: "Seventeen Minute Hole", src: "audio/track-18-weary-wanderers.mp3" },
   { title: "Here I am Home", album: "Seventeen Minute Hole", src: "audio/track-21-here-i-am-home.mp3" },
+  { title: "Weary Wanderers", album: "Seventeen Minute Hole", src: "audio/track-18-weary-wanderers.mp3" },
 
   // ---- Enter the Daydream, 2004 ----
   { title: "Spin", album: "Enter the Daydream", src: "audio/track-15-spin.mp3" },
