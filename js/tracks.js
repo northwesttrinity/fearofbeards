@@ -46,6 +46,7 @@ const TRACKS = [
   { title: "Giants & Gnomes", album: "Enter the Daydream", src: "audio/track-12-giants-and-gnomes.mp3" },
   { title: "We Are Change", album: "Enter the Daydream", src: "audio/track-04-we-are-change.mp3" },
   { title: "The Trees Believe", album: "Enter the Daydream", src: "audio/track-10-the-trees-believe.mp3" },
+  { title: "Tuning In", album: "Enter the Daydream", src: "audio/track-23-tuning-in.mp3" },
 
   // ---- Discounted Lucky Stars, 2002 ----
   { title: "Rise Again", album: "Discounted Lucky Stars", src: "audio/track-22-rise-again.mp3" },
