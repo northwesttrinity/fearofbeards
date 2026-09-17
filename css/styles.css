@@ -183,7 +183,7 @@ section { padding: 100px var(--edge); max-width: var(--max); margin: 0 auto; }
   gap: 44px;
   margin-bottom: 48px;
 }
-.listen-art { display: flex; justify-content: center; }
+.listen-art { display: flex; justify-content: center; order: -1; }
 
 /* Three covers in a clear, separated row — each its own size, each on its
    own slight tilt — rather than overlapping, so every cover reads on its
