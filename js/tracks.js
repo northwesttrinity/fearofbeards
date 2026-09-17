@@ -48,10 +48,10 @@ const TRACKS = [
   { title: "The Trees Believe", album: "Enter the Daydream", src: "audio/track-10-the-trees-believe.mp3" },
 
   // ---- Discounted Lucky Stars, 2002 ----
-  { title: "Rise Again", album: "Discounted Lucky Stars", src: "audio/track-22-rise-again.mp3" },
-  { title: "We Can Be Free", album: "Discounted Lucky Stars", src: "audio/track-02-we-can-be-free.mp3" },
   { title: "Black Hole", album: "Discounted Lucky Stars", src: "audio/track-08-black-hole.mp3" },
+  { title: "Rise Again", album: "Discounted Lucky Stars", src: "audio/track-22-rise-again.mp3" },
   { title: "The Evening", album: "Discounted Lucky Stars", src: "audio/track-06-the-evening.mp3" },
+  { title: "We Can Be Free", album: "Discounted Lucky Stars", src: "audio/track-02-we-can-be-free.mp3" },
   { title: "Round & Round", album: "Discounted Lucky Stars", src: "audio/track-13-round-and-round.mp3" },
   { title: "All I Want", album: "Discounted Lucky Stars", src: "audio/track-07-all-i-want.mp3" },
   { title: "Storm", album: "Discounted Lucky Stars", src: "audio/track-11-storm.mp3" },
