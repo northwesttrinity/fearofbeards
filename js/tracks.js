@@ -30,10 +30,10 @@ const ALBUMS = {
 const TRACKS = [
   // ---- Seventeen Minute Hole, 2006 ----
   { title: "Sink or Swim", album: "Seventeen Minute Hole", src: "audio/track-19-sink-or-swim.mp3" },
+  { title: "Tuning In", album: "Seventeen Minute Hole", src: "audio/track-23-tuning-in.mp3" },
   { title: "Test Run", album: "Seventeen Minute Hole", src: "audio/track-20-test-run.mp3" },
   { title: "Parting Breath", album: "Seventeen Minute Hole", src: "audio/track-17-parting-breath.mp3" },
   { title: "First Day", album: "Seventeen Minute Hole", src: "audio/track-05-first-day.mp3" },
-  { title: "Tuning In", album: "Seventeen Minute Hole", src: "audio/track-23-tuning-in.mp3" },
   { title: "Human Being", album: "Seventeen Minute Hole", src: "audio/track-14-human-being.mp3" },
   { title: "Here I am Home", album: "Seventeen Minute Hole", src: "audio/track-21-here-i-am-home.mp3" },
   { title: "Weary Wanderers", album: "Seventeen Minute Hole", src: "audio/track-18-weary-wanderers.mp3" },
