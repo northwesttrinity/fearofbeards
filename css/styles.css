@@ -170,7 +170,8 @@ a { color: inherit; }
 section { padding: 100px var(--edge); max-width: var(--max); margin: 0 auto; }
 .section-head { margin-bottom: 48px; max-width: 640px; }
 .listen .section-head { max-width: none; margin-bottom: 0; }
-.section-sub { color: var(--slate); font-size: 16px; max-width: 68ch; }
+.section-sub { color: var(--slate); font-size: 16px; }
+.listen .section-sub { max-width: none; }
 .section-sub em { font-style: normal; color: var(--ink); font-weight: 600; }
 
 /* ================= PLAYER ================= */
