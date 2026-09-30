@@ -21,6 +21,7 @@
   let remotePlayer = null;
   let remotePlayerController = null;
   let isCasting = false;
+  let lastIdleNotified = false; // guards against double-firing for the same idle period
 
   function getAbsoluteUrl(path) {
     return new URL(path, window.location.href).href;
@@ -37,42 +38,8 @@
     mediaInfo.metadata.artist = `Fear of Beards — ${track.album || ""}`;
     const request = new chrome.cast.media.LoadRequest(mediaInfo);
     request.autoplay = autoplay !== false;
-
-    // Capture which track this load is for, so a late-firing listener from
-    // an old media session can't accidentally advance past whatever the
-    // user has since switched to.
-    const trackIndexAtLoadTime = currentIndex;
-
-    session
-      .loadMedia(request)
-      .then(() => {
-        const media = session.getMediaSession();
-        if (!media) return;
-
-        // Listen directly on the media session itself for completion —
-        // this is the reliable signal for "this track actually finished
-        // playing." Checking idleReason indirectly through the higher-level
-        // RemotePlayerController's state-change event was the previous
-        // approach and could be stale/out of sync with the real session.
-        function onMediaUpdate(isAlive) {
-          if (!isAlive) {
-            media.removeUpdateListener(onMediaUpdate);
-            return;
-          }
-          if (media.idleReason === chrome.cast.media.IdleReason.FINISHED) {
-            media.removeUpdateListener(onMediaUpdate);
-            if (
-              isCasting &&
-              trackIndexAtLoadTime === currentIndex &&
-              trackIndexAtLoadTime < TRACKS.length - 1
-            ) {
-              loadTrack(trackIndexAtLoadTime + 1, true);
-            }
-          }
-        }
-        media.addUpdateListener(onMediaUpdate);
-      })
-      .catch(() => {});
+    lastIdleNotified = false;
+    session.loadMedia(request).catch(() => {});
   }
 
   function onCastConnectionChange() {
@@ -145,11 +112,31 @@
   }
 
   // When casting, the local <audio> "ended" event never fires (nothing is
-  // playing locally). Auto-advance is now handled directly in
-  // castCurrentTrack via a listener on the media session itself — this
-  // handler just keeps the play/pause icon in sync with remote state.
+  // playing locally) — the receiver device is the one actually playing.
+  // Auto-advance instead watches the remote player's own state via
+  // RemotePlayerController, the SDK's documented way to observe this
+  // (an earlier attempt used Media.addUpdateListener() directly on the
+  // raw session object, but that didn't reliably fire here).
   function onCastPlayerStateChanged() {
     updatePlayUI();
+    if (!isCasting || !remotePlayer) return;
+
+    const isIdle = remotePlayer.playerState === chrome.cast.media.PlayerState.IDLE;
+    if (!isIdle) {
+      lastIdleNotified = false;
+      return;
+    }
+    if (lastIdleNotified) return; // already handled this idle period
+
+    const session = cast.framework.CastContext.getInstance().getCurrentSession();
+    const media = session && session.getMediaSession();
+    const finished = media && media.idleReason === chrome.cast.media.IdleReason.FINISHED;
+    if (finished) {
+      lastIdleNotified = true;
+      if (currentIndex < TRACKS.length - 1) {
+        loadTrack(currentIndex + 1, true);
+      }
+    }
   }
 
   // ---------- Local player ----------
