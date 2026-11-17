@@ -42,6 +42,7 @@ const TRACKS = [
   { title: "Spin", album: "Enter the Daydream", src: "audio/track-15-spin.mp3" },
   { title: "Under One Sun", album: "Enter the Daydream", src: "audio/track-09-under-one-sun.mp3" },
   { title: "Breaking Out", album: "Enter the Daydream", src: "audio/track-16-breaking-out.mp3" },
+  { title: "Crack House", album: "Enter the Daydream", src: "audio/track-24-crack-house.mp3" },
   { title: "Any Time You Like", album: "Enter the Daydream", src: "audio/track-01-any-time-you-like.mp3" },
   { title: "Giants & Gnomes", album: "Enter the Daydream", src: "audio/track-12-giants-and-gnomes.mp3" },
   { title: "We Are Change", album: "Enter the Daydream", src: "audio/track-04-we-are-change.mp3" },
